@@ -1,6 +1,7 @@
 .container{
   display: flex;
   width: 100%;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
   margin-top: 2em;
@@ -9,6 +10,7 @@
 .firstSection{
   display: flex;
   justify-content: center;
+  flex-flow: wrap;
   align-items: center;
   flex-direction: row;
   gap: 2em;
@@ -38,4 +40,22 @@
   background-color: white;
   border-radius: 10px;
   border: 5px solid #D0D4D7;
+}
+
+@media (max-width: 900px){
+  .trending, .mostwanted{
+    width: 150px;
+    height: 150px;
+  }
+
+  .mostPopular1, .mostPopular2{
+    width: 150px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+  }
+  .mostPopular1 img{
+    width: 50%;
+    height: 100%;
+  }
 }

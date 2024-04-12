@@ -6,13 +6,43 @@
 }
 .sectionContent{
   margin-top: 5em;
-  width: 1200px;
+  width: 65%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  flex-flow: row;
   border-top: 1px solid black;
+}
+
+.product{
+  width: 33%;
+  #display: flex;
+}
+.product p{
+  margin-left: 3em;
+}
+.searches{
+  width: 33%;
+  #display: flex;
+}
+.searches p{
+  margin-left: 3em;
+}
+.lassevendays{
+  width: 33%;
+}
+.lassevendays p{
+ margin-left: 10em;
+}
+/*.product{
+  margin-left: 3em;
+}
+.searches{
+  margin-right: 6em;
+}*/
+@media (max-width: 900px){
+  .sectionContent{
+    width: 100%;
+  }
 }
 
 

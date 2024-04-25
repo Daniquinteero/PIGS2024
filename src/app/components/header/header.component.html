@@ -14,7 +14,9 @@
     <button class="registerButon" type="button"> Sign in</button>
   </div>
 </div>
+<div class="loginContainer" *ngIf="getLoginActivator()" (click)="LoginActivate()">
 
-<div class="loginContainer" *ngIf="getLoginActivator()">
+</div>
+<div class="loginContainer2" *ngIf="getLoginActivator()">
   <app-login></app-login>
 </div>

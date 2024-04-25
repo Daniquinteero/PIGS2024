@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {RouterLink, RouterLinkActive, ROUTES} from "@angular/router";
 import {routes} from "../../app.routes";
 import {ActivatorComponentsService} from "../../Services/activator-components.service";
@@ -19,6 +19,7 @@ import {NgIf} from "@angular/common";
 })
 export class HeaderComponent {
 
+  @ViewChild('loginContainer') loginContainerRef!: ElementRef;
   constructor(private activatorService: ActivatorComponentsService) {}
 
 
@@ -29,4 +30,6 @@ export class HeaderComponent {
   LoginActivate(){
     this.activatorService.setLoginActivator();
   }
+
+
 }

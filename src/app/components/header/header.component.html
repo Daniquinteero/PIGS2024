@@ -10,8 +10,11 @@
   </div>
 
   <div class="headerButons">
-    <button class="loginButon" type="button"> Login </button>
+    <button class="loginButon" type="button" (click)="LoginActivate()"> Login </button>
     <button class="registerButon" type="button"> Sign in</button>
   </div>
-<div>
+</div>
 
+<div class="loginContainer" *ngIf="getLoginActivator()">
+  <app-login></app-login>
+</div>

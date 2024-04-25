@@ -15,14 +15,14 @@
 
 .product{
   width: 33%;
-  #display: flex;
+  /*display: flex;*/
 }
 .product p{
   margin-left: 3em;
 }
 .searches{
   width: 33%;
-  #display: flex;
+  /*display: flex;*/
 }
 .searches p{
   margin-left: 3em;
@@ -42,6 +42,10 @@
 @media (max-width: 900px){
   .sectionContent{
     width: 100%;
+  }
+
+  .lassevendays p{
+    margin-left: 2em;
   }
 }
 

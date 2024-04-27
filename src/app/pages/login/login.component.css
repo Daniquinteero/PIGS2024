@@ -25,8 +25,13 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
+  align-items: center;
+  gap: 1em;
 }
 
+.containerLoginForm input{
+  width: 50%;
+}
 .containerRememberme{
   display: flex;
   flex-flow: row;

@@ -4,6 +4,7 @@ import {routes} from "../../app.routes";
 import {ActivatorComponentsService} from "../../Services/activator-components.service";
 import {LoginComponent} from "../../pages/login/login.component";
 import {NgIf} from "@angular/common";
+import {ApiServiceService} from "../../Services/api-service.service";
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ import {NgIf} from "@angular/common";
 export class HeaderComponent {
 
   @ViewChild('loginContainer') loginContainerRef!: ElementRef;
-  constructor(private activatorService: ActivatorComponentsService) {}
+  constructor(private activatorService: ActivatorComponentsService) {} //, private googleTrendsService: ApiServiceService
 
 
   getLoginActivator(){
@@ -31,5 +32,22 @@ export class HeaderComponent {
     this.activatorService.setLoginActivator();
   }
 
+
+  /*ngOnInit() {
+    this.getTrendsData();
+  }*/
+
+  /*getTrendsData() {
+    const searchTerm = 'ihpone15'; // Reemplaza 'término de búsqueda' con tu término de búsqueda
+    this.googleTrendsService.getGoogleTrendsData(searchTerm).subscribe(
+      (data) => {
+        console.log(data);
+        // Aquí puedes manejar los datos de respuesta
+      },
+      (error) => {
+        console.error('Error al obtener datos de Google Trends:', error);
+      }
+    );
+  }*/
 
 }

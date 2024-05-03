@@ -18,7 +18,7 @@ import {ApiServiceService} from "../../Services/api-service.service";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent{
 
   @ViewChild('loginContainer') loginContainerRef!: ElementRef;
   constructor(private activatorService: ActivatorComponentsService, private googleTrendsService: ApiServiceService) {} //, private googleTrendsService: ApiServiceService
@@ -32,12 +32,12 @@ export class HeaderComponent implements OnInit{
     this.activatorService.setLoginActivator();
   }
 
-  ngOnInit() {
+  /*ngOnInit() {
     this.getDataFromApi();
   }
 
   getDataFromApi() {
-    this.googleTrendsService.getData();
-  }
+    this.googleTrendsService.getUsers();
+  }*/
 
 }

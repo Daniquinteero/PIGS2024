@@ -24,7 +24,7 @@ export class AppComponent {
         console.log('Respuesta del servidor:', response);
         // Aquí puedes manejar los datos de la respuesta
         this.response = response;
-        console.log('Prueba de datos:', this.response['Datos de tendencia a lo largo del tiempo']['tendencia'].fecha)
+        console.log('Prueba de datos:', this.response['Datos de tendencia a lo largo del tiempo']['tendencia'])
       },
       error => {
         console.error('Error al procesar la solicitud:', error);

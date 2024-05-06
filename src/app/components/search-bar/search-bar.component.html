@@ -1,0 +1,6 @@
+<div class="searchBar">
+    <input class="searchInput" placeholder="Search..." [(ngModel)]="searchTerm" (keydown)="onEnter($event)">
+    <button class="searchButton" type="button" (click)="searchProducts()">
+      <img class="searchImage" src="assets/IMG/lupa.svg">
+    </button>
+</div>

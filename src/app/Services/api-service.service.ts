@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {getHtmlBySearchId, getJson, getJsonBySearchId} from 'serpapi';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  constructor() { //private http: HttpClient
-    let node = document.createElement('script');
-    node.src = './assets/Script/test.js';
-    node.type = 'module';
-    node.async = true;
-    document.getElementsByTagName('head')[0].appendChild(node);
+  constructor(private http: HttpClient) { }
+
+  sendDataToPython(data: any) {
+    return this.http.post<any>('http://localhost:5000/process_data', data);
   }
-
-
-
 }

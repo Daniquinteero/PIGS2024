@@ -1,16 +1,35 @@
 import { Component } from '@angular/core';
-import {RouterOutlet, ɵEmptyOutletComponent} from '@angular/router';
-import {MainPageComponent} from "./pages/principal/main-page/main-page.component";
-import {HeaderComponent} from "./components/header/header.component";
-import {FooterComponent} from "./components/footer/footer.component";
+import {ApiServiceService} from "./Services/api-service.service";
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ɵEmptyOutletComponent, MainPageComponent, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PIGS2024';
+  inputData: string;
+  pythonResult: any;
+  response:any;
+  constructor(private pythonService: ApiServiceService) { //private pythonService: ApiServiceService
+    this.inputData = "iphone";
+  }
+
+  ngOnInit() {
+    this.sendToPython();
+  }
+  sendToPython() {
+    const data = { data: this.inputData };
+    this.pythonService.sendDataToPython(data).subscribe(
+      response => {
+        console.log('Respuesta del servidor:', response);
+        // Aquí puedes manejar los datos de la respuesta
+        this.response = response;
+        console.log('Prueba de datos:', this.response['Datos de tendencia a lo largo del tiempo']['tendencia'].fecha)
+      },
+      error => {
+        console.error('Error al procesar la solicitud:', error);
+      }
+    );
+  }
+
 }

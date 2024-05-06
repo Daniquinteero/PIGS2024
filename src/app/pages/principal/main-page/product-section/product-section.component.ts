@@ -3,12 +3,8 @@ import {ProductContainerComponent} from "../product-container/product-container.
 
 @Component({
   selector: 'app-product-section',
-  standalone: true,
-  imports: [
-    ProductContainerComponent
-  ],
   templateUrl: './product-section.component.html',
-  styleUrl: './product-section.component.css'
+  styleUrls:['./product-section.component.css']
 })
 export class ProductSectionComponent {
 

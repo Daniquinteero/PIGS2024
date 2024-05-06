@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PIGS2024": {
+    "prueba": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pigs2024",
+            "outputPath": "dist/prueba",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -46,9 +46,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "PIGS2024:build:production"
+              "browserTarget": "prueba:build:production"
             },
             "development": {
-              "buildTarget": "PIGS2024:build:development"
+              "browserTarget": "prueba:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "PIGS2024:build"
+            "browserTarget": "prueba:build"
           }
         },
         "test": {
@@ -93,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "61f25b56-8a6b-45f2-997e-e9ef9dabe0a3"
+    "analytics": "b5cfca01-1da7-4b40-bcae-236c331b1d1d"
   }
 }

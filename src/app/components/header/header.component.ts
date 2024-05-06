@@ -17,6 +17,7 @@ export class HeaderComponent{
   pythonResult: any;
   constructor(private activatorService: ActivatorComponentsService, private googleTrendsService: ApiServiceService) {
     this.inputData = "iphone";
+    this.sendToPython();
   } //, private googleTrendsService: ApiServiceService
 
 

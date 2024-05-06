@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
-  styleUrl: './search-result.component.css'
+  styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent {
   searchResults: any[] = [];

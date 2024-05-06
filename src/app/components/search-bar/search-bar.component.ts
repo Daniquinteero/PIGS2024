@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+  styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
   searchTerm: string = '';
@@ -23,7 +23,7 @@ export class SearchBarComponent {
         });
     }
   }
-  
+
   onEnter(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
       this.searchProducts();

@@ -4,22 +4,19 @@ import {ActivatorComponentsService} from "../../Services/activator-components.se
 import {LoginComponent} from "../../pages/login/login.component";
 import {NgIf} from "@angular/common";
 import {ApiServiceService} from "../../Services/api-service.service";
+import {FireBaseService} from "../../Services/fire-base.service";
+import {user} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent{
+export class HeaderComponent {
 
   @ViewChild('loginContainer') loginContainerRef!: ElementRef;
-  inputData !: string;
-  pythonResult: any;
-  constructor(private activatorService: ActivatorComponentsService, private googleTrendsService: ApiServiceService) {
-    this.inputData = "iphone";
-    this.sendToPython();
-  } //, private googleTrendsService: ApiServiceService
-
+  constructor(private activatorService: ActivatorComponentsService, private authService: FireBaseService) {
+  }
 
   getLoginActivator(){
     return this.activatorService.getLoginActivator();
@@ -29,17 +26,14 @@ export class HeaderComponent{
     this.activatorService.setLoginActivator();
   }
 
-  /*ngOnInit() {
-    this.getDataFromApi();
+  getModaLogged(){
+    return this.activatorService.getLogged();
   }
 
-  getDataFromApi() {
-    this.googleTrendsService.getUsers();
-  }*/
-  sendToPython() {
+  /*sendToPython() {
     this.googleTrendsService.sendDataToPython({ data: this.inputData }).subscribe(result => {
       this.pythonResult = result;
     });
-  }
+  }*/
 
 }

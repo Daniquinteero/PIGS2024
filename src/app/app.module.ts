@@ -13,6 +13,11 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule} from "@angular/fire/compat";
+import { AngularFireAuthModule} from "@angular/fire/compat/auth";
+import { environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -33,7 +38,15 @@ const routes: Routes = [
     SearchResultComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, RouterOutlet, RouterModule.forRoot(routes), CommonModule, FormsModule
+    BrowserModule,
+    HttpClientModule,
+    RouterOutlet,
+    RouterModule.forRoot(routes),
+    CommonModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

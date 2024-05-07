@@ -1,17 +1,17 @@
 <div class="container">
   <div class="containerCloseButton">
-    <button class="closeButton">X</button>
+    <button class="closeButton" (click)="LoginActivate()">X</button>
   </div>
   <div class="containerGoogleButton">
-    <button class="googleButton">Continue con Google</button>
+    <button class="googleButton" (click)="singInWithGoogle()" >Continue con Google</button>
   </div>
   <div class="containerAppleButton">
     <button class="AppleButton">Continue con Apple</button>
   </div>
 
   <div class="containerLoginForm">
-    <input class="emailInput" type="text" placeholder="Enter your email address">
-    <input class="passwordInput" type="text" placeholder="Enter your password">
+    <input class="emailInput" type="text" placeholder="Enter your email address" [(ngModel)]="email">
+    <input class="passwordInput" type="password" placeholder="Enter your password" [(ngModel)]="password">
   </div>
 
   <div class="containerRememberme">
@@ -23,7 +23,7 @@
   </div>
 
   <div class="containerLoginbutton">
-    <button class="loginButon">Login</button>
+    <button class="loginButon" (click)="signIn();LoginActivate()" >Login</button>
   </div>
 </div>
 

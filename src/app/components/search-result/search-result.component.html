@@ -1,10 +1,20 @@
 <div *ngIf="searchResults && searchResults.length > 0">
     <h2>Resultados de la búsqueda:</h2>
-    <ul>
-    <li *ngFor="let result of searchResults">
-        {{ result[1] }}
-    </li>
-    </ul>
+    <div class="product-grid">
+        <div *ngFor="let result of searchResults" class="product-item">
+            <div class="product-content">
+                <a [routerLink]="['/product', result[0]]">
+                    <img src="{{ result[3] }}" alt="Imagen del producto">
+                </a>
+                <div class="product-details">
+                    <a [routerLink]="['/product', result[0]]">
+                        <p><strong>{{ result[1] }}</strong></p>
+                    </a>
+                    <p>{{ result[2] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div *ngIf="!searchResults || searchResults.length === 0">
     <p>No se encontraron resultados.</p>

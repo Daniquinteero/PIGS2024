@@ -1,0 +1,50 @@
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0; /* Margen superior e inferior de 20px, márgenes laterales de 0 */
+}
+
+.product-item {
+    width: 18%; /* Ancho del producto del 18% */
+    margin-bottom: 20px;
+    height: auto; /* Para que la altura se ajuste al contenido */
+}
+
+@media screen and (min-width: 768px) {
+    .product-item {
+        margin-right: calc((100% - (18% * 3)) / 6); /* Calculamos el margen derecho */
+        margin-left: calc((100% - (18% * 3)) / 6); /* Calculamos el margen izquierdo */
+    }
+
+    .product-item:nth-child(3n) {
+        margin-right: 0; /* Eliminar el margen derecho para el tercer elemento de cada fila */
+    }
+
+    /* Ajustar los márgenes si solo hay dos elementos en una fila */
+    @media (max-width: calc(18% * 2 + (100% - (18% * 3)) / 6 * 2)) {
+        .product-grid {
+            justify-content: space-evenly; /* Ajustar la justificación para centrar los elementos */
+        }
+
+        .product-item:nth-child(2n) {
+            margin-left: auto; /* Mover el primer elemento a la izquierda */
+            margin-right: auto; /* Mover el segundo elemento al centro */
+        }
+    }
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-content img {
+    width: 100%;
+    height: 50%; /* Reducción de la altura al 50% */
+    object-fit: cover; /* Para que la imagen se ajuste dentro de su contenedor sin deformarse */
+    margin-bottom: 10px;
+}
+
+.product-details {
+    text-align: center;
+}

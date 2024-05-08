@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from 'src/app/Services/product.service';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,15 +9,18 @@ import { CommonModule } from '@angular/common';
 export class SearchBarComponent {
   searchTerm: string = '';
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private router: Router) { 
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.searchTerm = ''
+      }
+    });
+  }
 
   searchProducts(): void {
     if (this.searchTerm.trim() !== '') {
-      this.productService.searchProducts(this.searchTerm)
-        .subscribe((data: any) => {
-          this.router.navigate(['/result'], { state: { data: data } });
-          console.log(data);
-        });
+      const url = `/search?q=${encodeURIComponent(this.searchTerm)}`;
+      this.router.navigateByUrl(url);
     }
   }
 

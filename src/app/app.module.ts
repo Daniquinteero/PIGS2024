@@ -17,12 +17,16 @@ import { AngularFireModule} from "@angular/fire/compat";
 import { AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
-
+import { UserDialogAccountComponent } from './pages/user-dialog-account/user-dialog-account.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
   {path: 'home', component:MainPageComponent},
-  {path: 'result', component:SearchResultComponent}
+  {path: 'result', component:SearchResultComponent},
+  {path: 'MyData', component:UserProfileComponent}
+
 ];
 
 @NgModule({
@@ -35,7 +39,10 @@ const routes: Routes = [
     ProductContainerComponent,
     ProductSectionComponent,
     SearchBarComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    UserDialogAccountComponent,
+    UserProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

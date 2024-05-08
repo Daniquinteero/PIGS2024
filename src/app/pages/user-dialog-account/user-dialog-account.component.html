@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="MyAccount">
+    <span>My Account</span>
+  </div>
+  <div class="LoginAndData" [routerLink]="['./MyData']" (click)="loginUserDialogAccountActivator()">
+    <span>My Data</span>
+  </div>
+  <div class="LogOut" (click)="logOut(); loginUserDialogAccountActivator()">
+    <span>Log Out</span>
+  </div>
+</div>
+

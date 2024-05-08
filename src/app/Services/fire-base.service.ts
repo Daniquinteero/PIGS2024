@@ -11,12 +11,14 @@ import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import firestore = firebase.firestore;
 import * as firebase2 from 'firebase/auth';
 import 'firebase/auth';
+import {ActivatorComponentsService} from "./activator-components.service";
 @Injectable({
   providedIn: 'root'
 })
 export class FireBaseService {
 
-  constructor(public Auth: AngularFireAuth, private firestore: AngularFirestore) {}
+  userData:any;
+  constructor(public Auth: AngularFireAuth, private firestore: AngularFirestore, private activatorService: ActivatorComponentsService) {}
 
   //loggin to firebase
   signIn(email: string, password: string){
@@ -29,13 +31,39 @@ export class FireBaseService {
 
 
   //create an user to firebase
-  singUp(email: string, password: string){
-    return this.Auth.createUserWithEmailAndPassword(email, password);
+  singUp(email: string, password: string, LastName: string, Name: string, UserName: string){
+    return this.Auth.createUserWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        // Obtener el UID del usuario creado
+        const uid = userCredential.user?.uid;
+        // Guardar la información adicional en Firestore
+        return this.firestore.collection('Usuarios').doc(uid).set({
+          user: UserName,
+          name: Name,
+          LastName: LastName,
+        });
+      })
+      .catch(error => {
+        // Manejar errores aquí
+        console.error('Error al crear usuario:', error);
+        throw error; // Puedes propagar el error para manejarlo en el componente que llama a esta función
+      });
   }
 
   //logout of firebase
   signOut(){
-    return this.Auth.signOut();
+    window.location.reload();
+    return this.Auth.signOut()
+      .then(() => {
+        // Cerrar sesión exitosamente
+        localStorage.removeItem('currentUser');
+        this.activatorService.$modalLogged.emit(false);
+        console.log('Sesión cerrada exitosamente.');
+      })
+      .catch(error => {
+        // Manejar errores si los hay
+        console.error('Error al cerrar sesión:', error);
+      });
   }
 
   //recopilacion de datos del user
@@ -61,4 +89,31 @@ export class FireBaseService {
     );
   }
 
+
+  extractUserFromFirebase(userCredential:any){
+    const uid = userCredential.user?.uid;
+    if (uid) {
+      this.activatorService.$modalLogged.emit(true);
+      this.getUserData(uid)
+        .subscribe(userData => {
+          if (userData) {
+            console.log('Datos del usuario:', userData);
+            this.userData = userData;
+            // Aquí puedes almacenar los datos del usuario en variables
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+          } else {
+            console.error('No se encontraron datos del usuario.');
+          }
+        });
+    } else {
+      console.error('No se encontró el UID del usuario.');
+    }
+  }
+
+  setCurrentUserData( userData:any){
+    this.userData = userData;
+  }
+  getCurrentUserData(){
+    return this.userData;
+  }
 }

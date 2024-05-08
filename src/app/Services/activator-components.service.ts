@@ -5,21 +5,36 @@ import {EventEmitter, Injectable} from '@angular/core';
 })
 export class ActivatorComponentsService {
   private loginActivator: boolean = false;
-  private logged = false;
+  private userDialogAccountActivator: boolean = false;
+  private signUpActivator: boolean = false;
   $modalLogged = new EventEmitter<any>();
   constructor() { }
 
+  //get y set para la activacion del menu de logging
   getLoginActivator(){
     return this.loginActivator;
   }
 
-  getLogged(){
-    return this.logged;
-  }
-  setLogged(){
-    this.logged = !this.logged;
-  }
+
   setLoginActivator(){
     this.loginActivator = !this.loginActivator;
   }
+  //get y set para la activacion del menu de signUp
+  getSignUpActivator(){
+    return this.signUpActivator;
+  }
+
+  setSigUpActivator(){
+    this.signUpActivator = !this.signUpActivator;
+  }
+
+  //set y get para la activacion del menu de loging
+  getUserDialogAccountActivator(){
+    return this.userDialogAccountActivator;
+  }
+  setUserDialogAccountActivator(){
+    this.userDialogAccountActivator = !this.userDialogAccountActivator;
+  }
+
+
 }

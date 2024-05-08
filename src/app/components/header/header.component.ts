@@ -13,7 +13,7 @@ import {user} from "@angular/fire/auth";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  private loginModal!:boolean;
   @ViewChild('loginContainer') loginContainerRef!: ElementRef;
   constructor(private activatorService: ActivatorComponentsService, private authService: FireBaseService) {
   }
@@ -26,14 +26,24 @@ export class HeaderComponent {
     this.activatorService.setLoginActivator();
   }
 
-  getModaLogged(){
-    return this.activatorService.getLogged();
+  getSingUpActivator(){
+    return this.activatorService.getSignUpActivator();
   }
 
-  /*sendToPython() {
-    this.googleTrendsService.sendDataToPython({ data: this.inputData }).subscribe(result => {
-      this.pythonResult = result;
-    });
-  }*/
+  SingUpActivate(){
+    this.activatorService.setSigUpActivator();
+  }
+
+  getUserDialogAccountActivator(){
+    return this.activatorService.getUserDialogAccountActivator();
+  }
+  loginUserDialogAccountActivator(){
+    this.activatorService.setUserDialogAccountActivator();
+  }
+
+  getModaLogged(){
+    this.activatorService.$modalLogged.subscribe((valor) => {this.loginModal = valor});
+    return this.loginModal;
+  }
 
 }

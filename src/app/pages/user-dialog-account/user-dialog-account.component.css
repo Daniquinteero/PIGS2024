@@ -1,0 +1,67 @@
+.container{
+  display: flex;
+  width: 250px;
+  height: 200px;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  border-radius: 8px;
+  border-left: 1px solid black;
+  border-top: 1px solid #e5e5ea;
+  border-left: 1px solid #e5e5ea;
+  border-bottom: 1px solid #e5e5ea;
+  border-right: 1px solid #e5e5ea;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Definición de la sombra */
+}
+
+.MyAccount{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  margin-left: 3em;
+  align-items: center;
+  gap: 1em;
+}
+
+
+.MyAccount::after {
+  content: ''; /* Contenido vacío necesario para que el pseudoelemento sea visible */
+ /* position: absolute; /* Para posicionar el pseudoelemento */
+  top: 50%; /* Para centrar verticalmente la línea */
+  left: calc(100% + 10px); /* Para posicionar la línea al lado derecho del texto */
+  height: 1px; /* Altura de la línea */
+  width: 40%; /* Longitud de la línea */
+  background-color: #dbdbdb; /* Color de la línea */
+  transform: translateY(-50%); /* Para centrar verticalmente la línea */
+}
+
+.LoginAndData{
+  display: flex;
+  width: 95%;
+  height: 50px;
+  align-items: center;
+  border-radius: 5px;
+}
+.LoginAndData span{
+  margin-left: 1em;
+}
+.LoginAndData:hover{
+  background-color: rgba(219, 219, 219, 0.5);
+}
+
+.LogOut{
+  display: flex;
+  width: 95%;
+  height: 50px;
+  align-items: center;
+  border-radius: 5px;
+}
+.LogOut span{
+  margin-left: 1em;
+}
+
+.LogOut:hover{
+  background-color: rgba(219, 219, 219, 0.5);
+}
+

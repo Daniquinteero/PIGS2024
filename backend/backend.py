@@ -10,10 +10,10 @@ def getDBConnection():
     conn.row_factory = sqlite3.Row
     return conn
 
-@app.route('/products/<name>', methods=['GET'])
-def getProductByName(name):
+@app.route('/products/<id>', methods=['GET'])
+def getProductByName(id):
     conn = getDBConnection()
-    cursor = conn.execute('SELECT * FROM products WHERE name = ?', (name,))
+    cursor = conn.execute('SELECT * FROM products WHERE id = ?', (id,))
     product = cursor.fetchone()
     conn.close()
     if product:

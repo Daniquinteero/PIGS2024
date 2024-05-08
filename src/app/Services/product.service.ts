@@ -15,4 +15,9 @@ export class ProductService {
     const url = `${this.baseUrl}/buscar-productos?term=${term}`;
     return this.http.get(url);
   }
+
+  searchProduct(id: string): Observable<any> {
+    const url = `${this.baseUrl}/products/${id}`;
+    return this.http.get(url);
+  }
 }

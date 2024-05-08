@@ -17,7 +17,7 @@ import { AngularFireModule} from "@angular/fire/compat";
 import { AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
-import { ProductComponent } from './product/product.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 const routes: Routes = [

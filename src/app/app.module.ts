@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
   {path: 'home', component:MainPageComponent},
   {path: 'search', component:SearchResultComponent},
-  {path: 'product/:id', component: ProductComponent}
+  {path: 'product/:id', component: ProductComponent},
   {path: 'result', component:SearchResultComponent},
   {path: 'MyData', component:UserProfileComponent}
 
@@ -44,7 +44,7 @@ const routes: Routes = [
     ProductSectionComponent,
     SearchBarComponent,
     SearchResultComponent,
-    ProductComponent
+    ProductComponent,
     SearchResultComponent,
     UserDialogAccountComponent,
     UserProfileComponent,

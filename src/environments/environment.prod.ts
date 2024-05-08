@@ -8,6 +8,7 @@ export const environment = {
     storageBucket: "productbase-49463.appspot.com",
     messagingSenderId: "747732654284",
     appId: "1:747732654284:web:011f8b6b948ec7e0894a69",
-    measurementId: "G-Y4QGKNG5RD"
+    measurementId: "G-Y4QGKNG5RD",
+    authPersistence: "session"
   }
 };

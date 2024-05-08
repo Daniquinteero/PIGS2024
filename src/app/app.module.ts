@@ -19,12 +19,18 @@ import { environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import { ProductComponent } from './components/product/product.component';
 
+import { UserDialogAccountComponent } from './pages/user-dialog-account/user-dialog-account.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
   {path: 'home', component:MainPageComponent},
   {path: 'search', component:SearchResultComponent},
   {path: 'product/:id', component: ProductComponent}
+  {path: 'result', component:SearchResultComponent},
+  {path: 'MyData', component:UserProfileComponent}
+
 ];
 
 @NgModule({
@@ -39,6 +45,10 @@ const routes: Routes = [
     SearchBarComponent,
     SearchResultComponent,
     ProductComponent
+    SearchResultComponent,
+    UserDialogAccountComponent,
+    UserProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

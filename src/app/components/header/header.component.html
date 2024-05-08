@@ -3,22 +3,47 @@
   <div class="logoContainer">
     <a class="logo" routerLink="/home"><img src="assets/IMG/logo%20image.svg"></a>
   </div>
+  <div class="searchBar">
+    <app-search-bar></app-search-bar>
+  </div>
 
-  <app-search-bar></app-search-bar>
 
   <div class="headerButons" *ngIf="!getModaLogged()">
     <button class="loginButon" type="button" (click)="LoginActivate()"> Login </button>
-    <button class="registerButon" type="button"> Sign in</button>
+    <button class="registerButon" type="button" (click)="SingUpActivate()" > Sign Up</button>
   </div>
 
   <div class="loggedHeaderButons" *ngIf="getModaLogged()">
-    <button class="loginButon" type="button"> pene </button>
-    <button class="SuscribeButon" type="button"> Subscribe</button>
+    <button class="loggedButon" type="button" (click)="loginUserDialogAccountActivator()"><img src="assets/IMG/userIcon.svg"></button>
+    <button class="registerButon" type="button"> Subscribe</button>
   </div>
+
+
+
 </div>
+
+<!--LOGIN COMPONENT-->
 <div class="loginContainer" *ngIf="getLoginActivator()" (click)="LoginActivate()">
 
 </div>
 <div class="loginContainer2" *ngIf="getLoginActivator()">
   <app-login></app-login>
 </div>
+
+<!--SING-UP COMPONENT-->
+<div class="SingUpContainer" *ngIf="getSingUpActivator()" (click)="SingUpActivate()">
+
+</div>
+<div class="SingUpContainer2" *ngIf="getSingUpActivator()">
+  <app-register></app-register>
+</div>
+
+<!--USERDIALOG COMPONENT-->
+<div class="UserDialogAccountBottom" *ngIf="getUserDialogAccountActivator()" (click)="loginUserDialogAccountActivator()">
+
+</div>
+<div class="UserDialogAccount" *ngIf="getUserDialogAccountActivator()">
+  <app-user-dialog-account></app-user-dialog-account>
+</div>
+
+

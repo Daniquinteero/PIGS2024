@@ -1,10 +1,34 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FireBaseService} from "../../Services/fire-base.service";
+import {ActivatorComponentsService} from "../../Services/activator-components.service";
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit{
+  navItems: string[] = ['My data', 'My portfolio', 'Product history'];
+  activeIndex: number = 0;
+
+  userData: any;
+  constructor(private authService : FireBaseService, private activatorService : ActivatorComponentsService) {
+  }
+  ngOnInit() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      // Si hay un usuario almacenado en el almacenamiento local, establece el estado de la sesión
+      this.userData = JSON.parse(currentUser);
+      this.activatorService.$modalLogged.emit(true);
+      console.log(this.userData.user);
+    } else {
+      // Si no hay un usuario almacenado, el usuario probablemente no haya iniciado sesión
+      // Puedes redirigirlo a la página de inicio de sesión o mostrar el formulario de inicio de sesión
+    }
+  }
+
+  setActive(index: number): void {
+    this.activeIndex = index;
+  }
 
 }

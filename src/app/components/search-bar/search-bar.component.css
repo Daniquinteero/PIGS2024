@@ -1,3 +1,6 @@
+*{
+  font-family: "Poppins", sans-serif;
+}
 .container{
     width: 100%;
     display: flex;
@@ -6,7 +9,7 @@
     align-items: center;
     border-bottom: 1px solid #dbdbdb;
   }
-  
+
   .logoContainer{
     width: 200px;
     display: flex;
@@ -17,7 +20,7 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-  
+
   }
   .searchInput{
     max-width: 100%;
@@ -34,7 +37,7 @@
   .searchInput:hover{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-  
+
   .headerButons{
     display: flex;
     flex-direction: row;
@@ -58,7 +61,7 @@
   .searchButton:hover{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
-  
+
   .loginButon{
     position: relative;
     width: 120px;
@@ -78,9 +81,9 @@
   .loginButon:active{
     animation: pulsar 0.2s cubic-bezier(.4,0,.2,1);
   }
-  
+
   @keyframes pulsar {
-  
+
     from{
       transform: scale(1);
     }
@@ -108,7 +111,7 @@
   .registerButon:active{
     animation: pulsar 0.2s cubic-bezier(.4,0,.2,1);;
   }
-  
+
   .loginContainer{
     position: absolute;
     top: 0;
@@ -133,7 +136,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   @media (max-width: 900px){
     .logoContainer{
       width:100px;
@@ -159,4 +162,3 @@
       height: 35px;
     }
   }
-  

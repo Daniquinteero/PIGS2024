@@ -22,6 +22,7 @@ import { ProductComponent } from './components/product/product.component';
 import { UserDialogAccountComponent } from './pages/user-dialog-account/user-dialog-account.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { MyDataComponent } from './pages/user-profile/my-data/my-data.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -29,7 +30,9 @@ const routes: Routes = [
   {path: 'search', component:SearchResultComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'result', component:SearchResultComponent},
-  {path: 'MyData', component:UserProfileComponent}
+  {path: 'userProfile', component:UserProfileComponent, children: [
+      {path:'MyData', component: MyDataComponent}
+    ]}
 
 ];
 
@@ -48,7 +51,8 @@ const routes: Routes = [
     SearchResultComponent,
     UserDialogAccountComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyDataComponent
   ],
   imports: [
     BrowserModule,

@@ -5,20 +5,21 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 import {Observable, throwError} from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import {doc, getDoc} from "@angular/fire/firestore";
-import firebase from "firebase/compat";
+import firebase from "firebase/compat/app";
 import Firestore = firebase.firestore.Firestore;
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import firestore = firebase.firestore;
 import * as firebase2 from 'firebase/auth';
 import 'firebase/auth';
 import {ActivatorComponentsService} from "./activator-components.service";
+import {ActivatedRoute, Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
 export class FireBaseService {
 
   userData:any;
-  constructor(public Auth: AngularFireAuth, private firestore: AngularFirestore, private activatorService: ActivatorComponentsService) {}
+  constructor(public Auth: AngularFireAuth, private firestore: AngularFirestore, private activatorService: ActivatorComponentsService,  private router: Router, private route: ActivatedRoute) {}
 
   //loggin to firebase
   signIn(email: string, password: string){
@@ -53,10 +54,12 @@ export class FireBaseService {
   //logout of firebase
   signOut(){
     window.location.reload();
+    this.router.navigate(['/home']);
     return this.Auth.signOut()
       .then(() => {
         // Cerrar sesión exitosamente
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('Datainformation');
         this.activatorService.$modalLogged.emit(false);
         console.log('Sesión cerrada exitosamente.');
       })
@@ -64,6 +67,7 @@ export class FireBaseService {
         // Manejar errores si los hay
         console.error('Error al cerrar sesión:', error);
       });
+
   }
 
   //recopilacion de datos del user
@@ -92,15 +96,19 @@ export class FireBaseService {
 
   extractUserFromFirebase(userCredential:any){
     const uid = userCredential.user?.uid;
+    console.log(uid);
     if (uid) {
       this.activatorService.$modalLogged.emit(true);
+
       this.getUserData(uid)
         .subscribe(userData => {
           if (userData) {
             console.log('Datos del usuario:', userData);
             this.userData = userData;
+
             // Aquí puedes almacenar los datos del usuario en variables
             localStorage.setItem('currentUser', JSON.stringify(userData));
+            localStorage.setItem('Datainformation', JSON.stringify(userCredential));
           } else {
             console.error('No se encontraron datos del usuario.');
           }
@@ -109,11 +117,56 @@ export class FireBaseService {
       console.error('No se encontró el UID del usuario.');
     }
   }
+  updateUserName(name: string): void {
+    const userData = {
+      user: name
+      // Otros campos que desees actualizar
+    };
+    const user = localStorage.getItem('Datainformation');
+    if(user){
+      const userId = JSON.parse(user).user.uid;
+      this.updateUser(userId, userData)
+        .then(() => {
+          this.extractUserFromFirebase(JSON.parse(user));
+          console.log('Usuario actualizado con éxito');
+        })
+        .catch(error => {
+          console.error('Error al actualizar usuario:', error);
+        });
 
-  setCurrentUserData( userData:any){
-    this.userData = userData;
+    }else{
+      console.log("error")
+    }
   }
-  getCurrentUserData(){
-    return this.userData;
+
+  updateUser(userId : string, userData: any){
+    const userRef = this.firestore.collection('Usuarios').doc(userId);
+
+    return userRef.update(userData);
   }
+
+  updateUserEmail(nuevoCorreo: string) {
+    const tmp = localStorage.getItem('Datainformation');
+    if(tmp){
+      const currentUser = JSON.parse(tmp).user;
+      if (currentUser) {
+        // Autenticar al usuario nuevamente para poder realizar cambios en las credenciales
+        const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, currentUser.password);
+        currentUser.reauthenticateWithCredential(credential)
+          .then(() => {
+            // Reautenticación exitosa, ahora se puede actualizar el correo electrónico
+            currentUser.updateEmail(nuevoCorreo);
+          })
+          .catch((error: any) => {
+            console.error('Error al reautenticar al usuario:', error);
+          });
+      } else {
+        console.error('Usuario no autenticado');
+      }
+    }else{
+      console.log("error");
+    }
+
+  }
+
 }

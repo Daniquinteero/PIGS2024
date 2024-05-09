@@ -1,5 +1,12 @@
 .container {
   display: flex;
+  flex-direction: row;
+  gap: 15%;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.leftContainer {
+  display: flex;
   flex-direction: column;
   gap: 2em;
   margin-left: 10%;
@@ -37,3 +44,8 @@
   font-weight: bolder;
 }
 
+.userProfileChildren{
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}

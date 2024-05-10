@@ -22,6 +22,7 @@ import { ProductComponent } from './components/product/product.component';
 import { UserDialogAccountComponent } from './pages/user-dialog-account/user-dialog-account.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProductChartComponent } from './components/product-chart/product-chart.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -48,7 +49,8 @@ const routes: Routes = [
     SearchResultComponent,
     UserDialogAccountComponent,
     UserProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductChartComponent
   ],
   imports: [
     BrowserModule,

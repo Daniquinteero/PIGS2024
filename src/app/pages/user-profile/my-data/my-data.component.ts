@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FireBaseService} from "../../../Services/fire-base.service";
+import {ActivatorComponentsService} from "../../../Services/activator-components.service";
 
 @Component({
   selector: 'app-my-data',
@@ -14,7 +15,7 @@ export class MyDataComponent implements OnInit{
   editable2: boolean = false;
   editable3: boolean = false;
   editedContent: string = "";
-  constructor(private authService: FireBaseService) {
+  constructor(private authService: FireBaseService, private activatorService: ActivatorComponentsService) {
   }
 
   ngOnInit() {
@@ -62,7 +63,13 @@ export class MyDataComponent implements OnInit{
     }
   }
 
-  purgeUser(){
-    this.authService.purgeUser();
+
+
+  setSecurePurgeActivator(){
+    this.activatorService.setSecurePurgeActivator();
+  }
+
+  getSecurePurgeActivator(){
+    return this.activatorService.getSecurePurgeActivator();
   }
 }

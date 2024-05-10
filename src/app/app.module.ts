@@ -24,8 +24,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { MyDataComponent } from './pages/user-profile/my-data/my-data.component';
 import { PortfolioViewComponent } from './components/portfolio-view/portfolio-view.component';
-import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
+import { PortfoliosComponent } from './pages/user-profile/portfolios/portfolios.component';
 import { PortfolioListComponent } from './pages/portfolio-list/portfolio-list.component';
+import { SecurePurgeDialogComponent } from './pages/user-profile/my-data/secure-purge-dialog/secure-purge-dialog.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -60,7 +61,8 @@ const routes: Routes = [
     SearchResultComponent,
     PortfolioViewComponent,
     PortfoliosComponent,
-    PortfolioListComponent
+    PortfolioListComponent,
+    SecurePurgeDialogComponent
   ],
   imports: [
     BrowserModule,

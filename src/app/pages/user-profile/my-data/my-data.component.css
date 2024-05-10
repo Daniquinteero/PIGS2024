@@ -13,6 +13,7 @@
 
 label {
   margin-bottom: 10px; /* Espacio entre la etiqueta y el textarea */
+  font-weight: bold;
 }
 
 textarea {
@@ -25,9 +26,42 @@ textarea {
   position: absolute;
   /*top: 10px; /* Ajusta la posición vertical según sea necesario */
   right: 5px; /* Ajusta la posición horizontal según sea necesario */
+
+
 }
 
 p{
   font-size: 13px;
   color: rgb(100 116 139);
+}
+
+a{
+  font-weight: bold;
+  color: #3AB109;
+  cursor: pointer;
+}
+
+.containerSecurePurgeBottom{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+.containerSecurePurge{
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }

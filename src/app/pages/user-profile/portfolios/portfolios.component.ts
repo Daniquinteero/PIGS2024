@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import {ActivatorComponentsService} from "../../Services/activator-components.service";
+import {ActivatorComponentsService} from "../../../Services/activator-components.service";
 
 @Component({
   selector: 'app-portfolios',

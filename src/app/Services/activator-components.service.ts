@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ export class ActivatorComponentsService {
   private signUpActivator: boolean = false;
   $modalLogged = new EventEmitter<any>();
   private PortfolioListActivator: boolean = false;
+  private securePurgeDialog: boolean = false;
   constructor() { }
 
   //get y set para la activacion del menu de logging
@@ -44,5 +45,14 @@ export class ActivatorComponentsService {
 
   setPortfolioListActivator(){
     this.PortfolioListActivator = !this.PortfolioListActivator;
+  }
+
+  //set y get para la activacion del menu de secure purge
+  getSecurePurgeActivator(){
+    return this.securePurgeDialog;
+  }
+
+  setSecurePurgeActivator(){
+    this.securePurgeDialog = !this.securePurgeDialog;
   }
 }

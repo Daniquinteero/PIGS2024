@@ -16,11 +16,11 @@
 
 }
 .close-button{
-    width: 25px;
-    height: 25px;
-    background-color: red;
+    width: 38px;
+    height: 38px;
+    /*background-color: red;
     border: none;
-    border-radius: 15px;
+    border-radius: 15px;*/
 
 }
 .portfolio-list-name{

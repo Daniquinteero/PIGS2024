@@ -18,10 +18,15 @@
     <a *ngIf="!editable2 && !editable" (click)="toggleEditablePassword()">{{ editable3 ? 'Save' : 'Change' }}</a>
   </div>
   <p>Password must contain at least 8 characters including 1 uppercase letter, <br> 1 lowercase letter, 1 number, and 1 special character</p>
-  <div>
+  <div class="deleteAccountContainer">
     <h2>Delete Account</h2>
     <p>This account will no longer be available, and all your saved data will be permanently deleted.</p>
-    <a (click)="purgeUser()" >Delete my account</a>
+    <a (click)="setSecurePurgeActivator()" >Delete my account</a>
   </div>
+</div>
+
+<div class="containerSecurePurgeBottom" *ngIf="getSecurePurgeActivator()" (click)="setSecurePurgeActivator()"></div>
+<div class="containerSecurePurge" *ngIf="getSecurePurgeActivator()">
+  <app-secure-purge-dialog></app-secure-purge-dialog>
 </div>
 

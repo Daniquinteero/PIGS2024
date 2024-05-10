@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="containerCloseButton">
+    <button class="close-button" (click)="setSecurePurgeActivator()" ><img src="assets/IMG/closeButton.svg"></button>
+  </div>
+  <div class="title">
+    <h2>Delete Account</h2>
+  </div>
+  <div class="advise">
+    <p>Deleting the account means that you will <strong>not be able to recover your data.</strong> All data from your ProductBase account will be deleted.
+      If it's not too much trouble, we would appreciate your feedback on how we can improve.</p>
+  </div>
+  <div class="buttons">
+    <button class="cancel-button" (click)="setSecurePurgeActivator()" > Cancel </button>
+    <button class="accept-button" (click)="purgeUser();setSecurePurgeActivator()"> Accept </button>
+  </div>
+</div>

@@ -135,7 +135,7 @@
   background-color: #3dbe01;
 }
 .registerButon:active{
-  animation: pulsar 0.2s cubic-bezier(.4,0,.2,1);;
+  animation: pulsar 0.2s cubic-bezier(.4,0,.2,1);
 }
 
 .loginContainer{

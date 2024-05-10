@@ -1,0 +1,20 @@
+
+<div class="portfolio-card" (click)="PortfolioListActivate()">
+    <p class="portfolio-card-title">Portfolio 1</p>
+    <ul class="portfolio-card-list">
+        <li class="portfolio-card-list-item">
+            <img class="portfolio-card-list-item-image" src="assets\IMG\image_placeholder.png" >
+        </li>
+        <li class="portfolio-card-list-item">
+            <img class="portfolio-card-list-item-image" src="assets\IMG\image_placeholder.png">
+        </li>
+    </ul>
+</div>
+<div class="portfolio-list-back" *ngIf="getPortfolioListActivator()" (click)="PortfolioListActivate()">
+
+</div>
+<div class="portfolio-list-modal" *ngIf="getPortfolioListActivator()">
+    <app-portfolio-list></app-portfolio-list>
+</div>
+
+

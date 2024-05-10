@@ -13,11 +13,15 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PortfolioViewComponent } from './components/portfolio-view/portfolio-view.component';
+import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
+import { PortfolioListComponent } from './pages/portfolio-list/portfolio-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
   {path: 'home', component:MainPageComponent},
-  {path: 'result', component:SearchResultComponent}
+  {path: 'result', component:SearchResultComponent},
+  {path: 'port', component:PortfoliosComponent},
 ];
 
 @NgModule({
@@ -30,7 +34,10 @@ const routes: Routes = [
     ProductContainerComponent,
     ProductSectionComponent,
     SearchBarComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    PortfolioViewComponent,
+    PortfoliosComponent,
+    PortfolioListComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterOutlet, RouterModule.forRoot(routes), CommonModule, FormsModule

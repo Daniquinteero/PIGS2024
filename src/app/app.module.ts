@@ -23,6 +23,9 @@ import { UserDialogAccountComponent } from './pages/user-dialog-account/user-dia
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MyDataComponent } from './pages/user-profile/my-data/my-data.component';
+import { PortfolioViewComponent } from './components/portfolio-view/portfolio-view.component';
+import { PortfoliosComponent } from './pages/portfolios/portfolios.component';
+import { PortfolioListComponent } from './pages/portfolio-list/portfolio-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -31,7 +34,8 @@ const routes: Routes = [
   {path: 'product/:id', component: ProductComponent},
   {path: 'result', component:SearchResultComponent},
   {path: 'userProfile', component:UserProfileComponent, children: [
-      {path:'MyData', component: MyDataComponent}
+      {path:'MyData', component: MyDataComponent},
+      {path:'MyPortfolio', component: PortfoliosComponent}
     ]}
 
 ];
@@ -52,7 +56,11 @@ const routes: Routes = [
     UserDialogAccountComponent,
     UserProfileComponent,
     RegisterComponent,
-    MyDataComponent
+    MyDataComponent,
+    SearchResultComponent,
+    PortfolioViewComponent,
+    PortfoliosComponent,
+    PortfolioListComponent
   ],
   imports: [
     BrowserModule,

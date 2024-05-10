@@ -1,0 +1,54 @@
+.portfolio-list{
+    display: flex;
+    width: 1000px;
+    height: 600px;
+    background-color: white;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-right: 20px;
+
+}
+.close-button{
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border: none;
+    border-radius: 15px;
+
+}
+.portfolio-list-name{
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 20px;
+
+}
+
+.container{
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .ProductContainer{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row;
+    border-top: 1px solid black;
+  }
+  .product{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+  }

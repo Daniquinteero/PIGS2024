@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ export class ActivatorComponentsService {
   private userDialogAccountActivator: boolean = false;
   private signUpActivator: boolean = false;
   $modalLogged = new EventEmitter<any>();
+  private PortfolioListActivator: boolean = false;
   constructor() { }
 
   //get y set para la activacion del menu de logging
@@ -37,4 +38,11 @@ export class ActivatorComponentsService {
   }
 
 
+  getPortfolioListActivator(){
+    return this.PortfolioListActivator;
+  }
+
+  setPortfolioListActivator(){
+    this.PortfolioListActivator = !this.PortfolioListActivator;
+  }
 }

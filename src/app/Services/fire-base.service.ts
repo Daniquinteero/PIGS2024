@@ -146,27 +146,48 @@ export class FireBaseService {
   }
 
   updateUserEmail(nuevoCorreo: string) {
-    const tmp = localStorage.getItem('Datainformation');
-    if(tmp){
-      const currentUser = JSON.parse(tmp).user;
-      if (currentUser) {
-        // Autenticar al usuario nuevamente para poder realizar cambios en las credenciales
-        const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, currentUser.password);
+    /*const tmp = localStorage.getItem('Datainformation');*/
+    const currentUser = firebase.auth().currentUser;
+
+
+    if(currentUser){
+      if(currentUser?.email != null){
+        const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, '123456');
         currentUser.reauthenticateWithCredential(credential)
           .then(() => {
-            // Reautenticación exitosa, ahora se puede actualizar el correo electrónico
-            currentUser.updateEmail(nuevoCorreo);
+            currentUser.updateEmail(nuevoCorreo)
+              .then(() => {
+
+                console.log('Correo electrónico actualizado exitosamente');
+              })
+              .catch((error: any) => {
+                console.error('Error al actualizar el correo electrónico:', error);
+              });
           })
           .catch((error: any) => {
-            console.error('Error al reautenticar al usuario:', error);
+            console.error('Error al actualizar el correo electrónico:', error);
           });
-      } else {
-        console.error('Usuario no autenticado');
       }
+
     }else{
       console.log("error");
     }
 
+  }
+
+  purgeUser() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      // Eliminar la cuenta del usuario
+      user.delete()
+        .then(() => {
+          console.log('Cuenta de usuario eliminada exitosamente');
+        })
+        .catch((error) => {
+          console.error('Error al eliminar la cuenta de usuario:', error);
+        });
+    }
+    this.signOut();
   }
 
 }

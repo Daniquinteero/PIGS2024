@@ -61,4 +61,8 @@ export class MyDataComponent implements OnInit{
       this.updateUserName(this.editedContent);
     }
   }
+
+  purgeUser(){
+    this.authService.purgeUser();
+  }
 }

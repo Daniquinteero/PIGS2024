@@ -20,6 +20,7 @@ export class MainPageComponent implements OnInit{
       // Si hay un usuario almacenado en el almacenamiento local, establece el estado de la sesión
       this.userData = JSON.parse(currentUser);
       this.activatorService.$modalLogged.emit(true);
+      console.log(this.userData.user);
     } else {
       // Si no hay un usuario almacenado, el usuario probablemente no haya iniciado sesión
       // Puedes redirigirlo a la página de inicio de sesión o mostrar el formulario de inicio de sesión

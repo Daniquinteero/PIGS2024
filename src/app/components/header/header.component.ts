@@ -12,11 +12,12 @@ import {user} from "@angular/fire/auth";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent{
   private loginModal!:boolean;
   @ViewChild('loginContainer') loginContainerRef!: ElementRef;
   constructor(private activatorService: ActivatorComponentsService, private authService: FireBaseService) {
   }
+
 
   getLoginActivator(){
     return this.activatorService.getLoginActivator();

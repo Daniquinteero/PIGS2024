@@ -1,0 +1,33 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px; /* Ajusta el ancho según sea necesario */
+}
+
+label {
+  margin-bottom: 10px; /* Espacio entre la etiqueta y el textarea */
+}
+
+textarea {
+  resize: none; /* Evita que el usuario cambie el tamaño del textarea */
+  /*height: 100px; /* Ajusta la altura según sea necesario */
+  padding-right: 5%; /* Espacio para el botón "Change" */
+}
+
+.input-container a {
+  position: absolute;
+  /*top: 10px; /* Ajusta la posición vertical según sea necesario */
+  right: 5px; /* Ajusta la posición horizontal según sea necesario */
+}
+
+p{
+  font-size: 13px;
+  color: rgb(100 116 139);
+}

@@ -1,0 +1,27 @@
+<div class="container">
+  <div>
+    <h2>My Data</h2>
+  </div>
+  <div class="input-container">
+    <label for="userName">User</label>
+    <textarea id="userName" name="userName" placeholder="{{this.name}}" [readonly]="!editable" [(ngModel)]="this.name"></textarea>
+    <a *ngIf="!editable2 && !editable3" (click)="toggleEditableName()">{{ editable ? 'Save' : 'Change' }}</a>
+  </div>
+  <div class="input-container">
+    <label for="email">Email</label>
+    <textarea id="email" name="email" placeholder="{{this.email}}" [readonly]="!editable2" [(ngModel)]="this.email"></textarea>
+    <a  *ngIf="!editable && !editable3" (click)="toggleEditableEmail()">{{ editable2 ? 'Save' : 'Change' }}</a>
+  </div>
+  <div class="input-container">
+    <label for="password">Password</label>
+    <textarea id="password" name="password" type="password" placeholder="******" [readonly]="!editable3" [(ngModel)]="this.password"></textarea>
+    <a *ngIf="!editable2 && !editable" (click)="toggleEditablePassword()">{{ editable3 ? 'Save' : 'Change' }}</a>
+  </div>
+  <p>Password must contain at least 8 characters including 1 uppercase letter, <br> 1 lowercase letter, 1 number, and 1 special character</p>
+  <div>
+    <h2>Delete Account</h2>
+    <p>This account will no longer be available, and all your saved data will be permanently deleted.</p>
+    <a (click)="purgeUser()" >Delete my account</a>
+  </div>
+</div>
+

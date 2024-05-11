@@ -17,7 +17,7 @@
   </section>
 
   <div class="chart-container">
-    <app-product-chart product="{{ product['searchs'] }}"></app-product-chart>
+    <app-product-chart product="{{ product['searchs'] }}" [chartID]="product['id'].toString()"></app-product-chart>
   </div>
 
 </div>

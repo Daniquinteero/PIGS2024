@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Chart} from "chart.js/auto";
 
 @Component({
@@ -6,21 +6,25 @@ import {Chart} from "chart.js/auto";
   templateUrl: './product-chart.component.html',
   styleUrls: ['./product-chart.component.css']
 })
-export class ProductChartComponent implements OnInit {
+export class ProductChartComponent {
 
   @Input() product: any;
+  @Input() chartID: any;
   jsonData: any;
+
 
   public chart: any;
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.jsonData = JSON.parse(this.product);
+
     this.createChart();
+
   }
 
   createChart(){
 
-    this.chart = new Chart("MyChart", {
+    this.chart = new Chart(this.chartID, {
       type: 'line',
 
       data: {// values on X-Axis
@@ -38,10 +42,19 @@ export class ProductChartComponent implements OnInit {
         maintainAspectRatio: false,
         scales: {
           x: {
-            display: true
+            display: false,
+          },
+          y: {
+            display: false,
+          }
+        },
+        plugins: {
+          legend: {
+            display: false // Hide legend
           }
         }
       }
     });
   }
+
 }

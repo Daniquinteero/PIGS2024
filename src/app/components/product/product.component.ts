@@ -28,6 +28,7 @@ export class ProductComponent implements OnInit {
         this.product = data;
         console.log(data)
         this.jsonData = JSON.parse(this.product['searchs']);
+
         this.totalNumberOfSearches();
       },
       (error) => {

@@ -2,13 +2,15 @@
 <body class="portfolios">
     <aside class="a"></aside>
     <div class="portfolios-user">
-        <app-portfolio-view class="portfolios-user-portfolio"></app-portfolio-view>
-        <app-portfolio-view class="portfolios-user-portfolio"></app-portfolio-view>
-        <app-portfolio-view class="portfolios-user-portfolio"></app-portfolio-view>
-        <app-portfolio-view class="portfolios-user-portfolio"></app-portfolio-view>
-        <div class="portfolio-add">
+        <div *ngFor="let portfolio of portfolios">
+            <app-portfolio-view class="portfolios-user-portfolio" [portfolio]="portfolio"></app-portfolio-view>
+        </div>
+        <div class="portfolio-add" (click)="openModal()">
             <img class="portfolio-add-img" src="assets\IMG\add_portfolio.png" >
         </div>
     </div>
+
+    <app-add-portfolio-dialog [isVisible]="modalVisible" (modalClosed)="onModalClosed()">
+    </app-add-portfolio-dialog>
 </body>
 

@@ -1,5 +1,4 @@
 import sqlite3
-import searchs
 
 def execute_queries(queries, variables=[]):
 
@@ -24,14 +23,11 @@ def execute_queries(queries, variables=[]):
 def create_tables():
 
     queries = [
-        '''
-        CREATE TABLE IF NOT EXISTS portfolios (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            id_user INTEGER,
-            name TEXT,
-            FOREIGN KEY (id_user) REFERENCES users(id)
-        )
-        ''',
+        '''CREATE TABLE IF NOT EXISTS portfolios (
+            id INTEGER PRIMARY KEY,
+            id_user TEXT,
+            name TEXT
+        )''',
         '''
         CREATE TABLE IF NOT EXISTS products (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,25 +37,23 @@ def create_tables():
             searchs TEXT
         )
         ''',
-        '''
-        CREATE TABLE IF NOT EXISTS products_portfolios (
-            id_product INTEGER,
-            id_portfolio INTEGER,
-            FOREIGN KEY (id_product) REFERENCES products(id),
-            FOREIGN KEY (id_portfolio) REFERENCES portfolios(id),
-            PRIMARY KEY (id_product, id_portfolio)
+        '''CREATE TABLE IF NOT EXISTS productos_portfolios (
+            id INTEGER PRIMARY KEY,
+            producto_id INTEGER,
+            portfolio_id INTEGER,
+            FOREIGN KEY(producto_id) REFERENCES productos(id),
+            FOREIGN KEY(portfolio_id) REFERENCES portfolios(id)
         )
         '''
     ]
 
     execute_queries(queries)
-
+    
 def drop_tables():
      
     queries = [
         "DROP TABLE IF EXISTS portfolios;",
-        "DROP TABLE IF EXISTS products;",
-        "DROP TABLE IF EXISTS products_portfolios;"
+        "DROP TABLE IF EXISTS products;"
         ]
     
     execute_queries(queries)

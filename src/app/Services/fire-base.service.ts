@@ -93,6 +93,15 @@ export class FireBaseService {
     );
   }
 
+  getUID(): string | null {
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      return currentUser.uid;
+    } else {
+      console.error('No se encontró el usuario actual.');
+      return null;
+    }
+  }
 
   extractUserFromFirebase(userCredential:any){
     const uid = userCredential.user?.uid;

@@ -1,0 +1,7 @@
+<div class="modal" [ngClass]="{'visible': isVisible}">
+  <div class="modal-content">
+    <input type="text" [(ngModel)]="portfolioName" placeholder="Nombre del Portfolio">
+    <button (click)="addPortfolio()">Crear Portfolio</button>
+    <button class="close-btn" (click)="closeModal()">Cerrar</button>
+  </div>
+</div>

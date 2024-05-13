@@ -27,6 +27,7 @@ import { PortfolioViewComponent } from './components/portfolio-view/portfolio-vi
 import { PortfoliosComponent } from './pages/user-profile/portfolios/portfolios.component';
 import { PortfolioListComponent } from './pages/portfolio-list/portfolio-list.component';
 import { SecurePurgeDialogComponent } from './pages/user-profile/my-data/secure-purge-dialog/secure-purge-dialog.component';
+import { ProductChartComponent } from './components/product-chart/product-chart.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -62,7 +63,8 @@ const routes: Routes = [
     PortfolioViewComponent,
     PortfoliosComponent,
     PortfolioListComponent,
-    SecurePurgeDialogComponent
+    SecurePurgeDialogComponent,
+    ProductChartComponent
   ],
   imports: [
     BrowserModule,

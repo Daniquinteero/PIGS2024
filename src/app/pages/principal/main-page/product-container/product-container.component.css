@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-flow: row;
+  flex-flow: column;
   border-top: 1px solid black;
 }
 .product{
@@ -18,9 +18,58 @@
   align-items: center;
   justify-content: center;
   gap: 2em;
+  height: 150px;
+  margin-bottom: 30px;
 }
 @media (max-width: 900px){
   .ProductContainer{
     width: 100%;
   }
+}
+
+.product-image{
+  overflow: hidden;
+  width: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image{
+  overflow: hidden;
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.chart-container{
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.Searches{
+  display: flex;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Searches p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333333;
+  font-size: 2vw;
+
 }

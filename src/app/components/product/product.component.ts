@@ -11,7 +11,9 @@ import { Chart } from 'chart.js/auto';
 export class ProductComponent implements OnInit {
   product: any;
   public chart: any;
-  
+  jsonData: any;
+  totalSearches: any;
+
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class ProductComponent implements OnInit {
       this.searchProduct(id);
       this.createChart();
     });
+
   }
 
   searchProduct(id: string) {
@@ -27,6 +30,9 @@ export class ProductComponent implements OnInit {
       (data) => {
         this.product = data;
         console.log(data)
+        this.jsonData = JSON.parse(this.product['searchs']);
+
+        this.totalNumberOfSearches();
       },
       (error) => {
         console.error('Error fetching product:', error);
@@ -62,5 +68,13 @@ export class ProductComponent implements OnInit {
       }
       
     });
+  }
+    
+  totalNumberOfSearches(){
+    let sum: number = 0;
+    for (let i = 0; i < this.jsonData['searchs'].length; i++) {
+      sum += this.jsonData['searchs'][i];
+    }
+    this.totalSearches = sum;
   }
 }

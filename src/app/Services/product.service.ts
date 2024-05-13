@@ -20,4 +20,9 @@ export class ProductService {
     const url = `${this.baseUrl}/products/${id}`;
     return this.http.get(url);
   }
+
+  getAllProducts(): Observable<any> {
+    const url = `${this.baseUrl}/all-products`;
+    return this.http.get(url);
+  }
 }

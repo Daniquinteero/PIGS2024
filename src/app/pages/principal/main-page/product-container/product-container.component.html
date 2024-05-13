@@ -1,14 +1,21 @@
 <div class="container">
   <div class="ProductContainer">
-    <div class="product">
-      <a><img src="assets/IMG/ph_star.svg"></a>
-      <img src="assets/IMG/raton.svg">
-    </div>
-    <div class="Searches">
-      <p> 2,1 MILL</p>
-    </div>
-    <div class="chart">
-      <img src="assets/IMG/grafica2.svg">
+    <div *ngFor="let product of products">
+
+      <section class="product-card" [routerLink]="['/product', product.id]">
+        <div class="product">
+          <a><img src="assets/IMG/ph_star.svg"></a>
+          <section class="product-image">
+            <img src="{{ product['url_img'] }}" alt="Imagen del producto" class="main-image">
+          </section>
+        </div>
+        <div class="Searches">
+          <p> {{ this.totalNumberOfSearches(product['searchs']) }}</p>
+        </div>
+        <div class="chart-container">
+          <app-product-chart product="{{ product['searchs'] }}" chartID="{{ product['id'] }}"></app-product-chart>
+        </div>
+      </section>
     </div>
   </div>
 </div>

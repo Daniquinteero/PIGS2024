@@ -21,7 +21,7 @@ def getProductByName(id):
         return jsonify(product_dict)
     else:
         return jsonify({'error': 'Producto no encontrado'}), 404
-    
+
 @app.route('/buscar-productos', methods=['GET'])
 def searchProducts():
     term = request.args.get('term')
@@ -30,6 +30,15 @@ def searchProducts():
     products = cursor.fetchall()
     conn.close()
     return jsonify(products)
+
+@app.route('/all-products', methods=['GET'])
+def getAllProducts():
+    conn = getDBConnection()
+    cursor = conn.execute('SELECT * FROM products')
+    products = cursor.fetchall()
+    conn.close()
+    product_dicts = [dict(row) for row in products]
+    return jsonify(product_dicts)
 
 if __name__ == '__main__':
     app.run(debug=True)
